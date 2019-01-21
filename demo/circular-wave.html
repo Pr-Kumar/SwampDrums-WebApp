@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="metronome.css" />
+    <script src="metronome.js"></script>
+    <script src="../server.js"></script>
+</head>
+
+<body>
+    <h1 class="title">SwampDrums</h1>
+    <div class="container">
+    <div class="circle"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    </div>
+    <!--<button onclick="increment()">Next Song</button>-->
+    <div id="chart-container" style="width: 100%; height: 50%;"></div>
+
+    <script src="../dist/circular-audio-wave.min.js"></script>
+
+    <script>
+        var i = 0;
+        let wave = new CircularAudioWave(document.getElementById('chart-container'));
+        var songs = ['audio1','audio2','audio3','KamikazeDrums','Redbone','Drums','Kamikaze'];
+        var sounds = ['tom.mp3', 'bass.mp3', 'hihat.mp3', 'crash.mp3'];
+        wave.loadAudio('audio/' + songs[i+4] + '.mp3');
+        function increment() {
+             i++;
+            //wave.loadAudio('audio/' + songs[i] + '.mp3');
+         }
+
+    </script>
+    <div class="wrapper"></div>
+    <div class="waveWrapper waveAnimation">
+        <div class="waveWrapperInner bgTop">
+            <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+        </div>
+    </div>
+    <div id="metronome"></div>
+    <div id="swinger"></div>
+    </div>
+    <!--
+            <div id="controls">
+                <div id="plus"> + </div>
+                <div id="minus"> - </div>
+                <div id="startstop">Start</div>
+            </div>
+    -->
+    <div class="container2" style="white-space:nowrap;">
+        <button onclick="wave.play()" id="startStop"></button>
+        <script>
+            var metronome = new Metronome(document.getElementById('metronome'));
+        </script>
+    </div>
+
+
+</body>
+
+</html>
